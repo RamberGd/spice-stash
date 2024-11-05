@@ -8,7 +8,7 @@
 import SwiftUI
 struct ContentView: View {
 	@State private var recipes: [Recipe] = [
-		Recipe(previewImage: "sample", recipeName: "Pasta Carbonara", time: "15-20 min", calories: 310)
+		Recipe(recipeImageBase64Encoded: "sample", recipeName: "Pasta Carbonara", time: "15-20 min", calories: 310)
 	]
 	
 	let columns = [
@@ -25,7 +25,7 @@ struct ContentView: View {
 							destination: EditRecipeView(recipe: $recipe)
 						) {
 							recipeSampleLine(
-								previewImage: recipe.previewImage,
+								recipeImageBase64Encoded: recipe.recipeImageBase64Encoded,
 								recipeName: recipe.recipeName,
 								time: recipe.time,
 								deleteBlock: {
@@ -40,7 +40,7 @@ struct ContentView: View {
 					
 					// Plus button to add new recipe
 					Button(action: {
-						recipes.append(Recipe(previewImage: "empty-img", recipeName: "New Recipe", time: "time", calories: 310))
+						recipes.append(Recipe(recipeImageBase64Encoded: "empty-img", recipeName: "New Recipe", time: "time", calories: 310))
 					}) {
 						Image(systemName: "plus.circle.fill")
 							.resizable()

@@ -16,8 +16,8 @@ struct EditRecipeView: View {
 			VStack(spacing: 0) {
 				ZStack(alignment: .bottomLeading) {
 					// Image handling...
-					if let imageData = recipe.imageData, let uiImage = UIImage(data: imageData) {
-						Image(uiImage: uiImage)
+					if let recipeImageData = recipe.recipeImageData{
+						Image(uiImage: UIImage(data: recipeImageData)!)
 							.resizable()
 							.aspectRatio(contentMode: .fill)
 							.frame(height: 300)
@@ -34,40 +34,48 @@ struct EditRecipeView: View {
 						endPoint: .bottom
 					)
 					
-					VStack(alignment: .leading, spacing: 8) {
-						TextField("Recipe Name", text: $recipe.recipeName)
-							.font(.title)
-							.foregroundColor(Color(defaultWhite))
+					
+					HStack() {
 						
+						Spacer()
 						
-						
-
-						HStack(spacing: 20) {
-							
-							Spacer()
-							
-							/*TextField("Calories", value: $recipe.calories, formatter: NumberFormatter())
-								.foregroundColor(.white)*/
-							
-							Text("calories")
-								.foregroundColor(.white.opacity(0.8))
-							
-							Text("•")
-								.foregroundColor(.white.opacity(0.8))
+						VStack(alignment: .leading, spacing: 4) {
+							// Recipe title
+							Text("Pasta Carbonara")
 								
-							
-							TextField("Cook Time", text: $recipe.time)
+								.fontWeight(.bold)
 								.foregroundColor(Color(defaultWhite))
+								.font(.titleDefault())
 							
-							Spacer()
-							
-						}
-						.frame(maxWidth: UIScreen.main.bounds.size.width, alignment: .center)
-						
-						.font(.subheadline)
+							// Calories and cook time row
+							HStack(spacing: 8) {
+								TextField("100", value: $recipe.calories, formatter: NumberFormatter())
+								.textFieldStyle(PlainTextFieldStyle())
+								.frame(width: 26)
+								.foregroundColor(Color(defaultWhite))
+								.font(.fontRegularDefault())
 				
+								.multilineTextAlignment(.leading)
+								Text("calories")
+									.foregroundColor(Color(defaultWhite))
+									.font(.fontRegularDefault())
+								
+								Text("•")
+									.foregroundColor(Color(defaultWhite))
+					
+								TextField("30 min", text: $recipe.time, prompt: Text("30 m"))
+									.textFieldStyle(PlainTextFieldStyle())
+									.foregroundColor(Color(defaultWhite))
+							}
+							.font(.subheadline)
+						}
+						.padding()
+						.padding()
+						
+						
+						Spacer()
 					}
-					.padding()
+					
 				}
 				.frame(height: 300)
 				
@@ -82,8 +90,8 @@ struct EditRecipeView: View {
 				.onChange(of: selectedImage) { oldValue, newValue in
 					Task {
 						if let data = try? await newValue?.loadTransferable(type: Data.self) {
-							recipe.imageData = data
-							recipe.previewImage = data.base64EncodedString()
+							recipe.recipeImageData = data
+							recipe.recipeImageBase64Encoded = data.base64EncodedString()
 						}
 					}
 				}
@@ -100,7 +108,7 @@ struct EditRecipeView: View {
 
 struct EditRecipeView_Previews: PreviewProvider {
 	static var previews: some View {
-		EditRecipeView(recipe: .constant(Recipe(previewImage: "sample", recipeName: "Pasta Carbonara", time: "25-30 min", calories: 310)))
+		EditRecipeView(recipe: .constant(Recipe(recipeImageBase64Encoded: "sample", recipeName: "Pasta Carbonara", time: "25-30 min", calories: 310)))
 	}
 }
 

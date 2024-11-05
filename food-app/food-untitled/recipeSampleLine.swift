@@ -2,7 +2,7 @@ import SwiftUI
 import PhotosUI
 
 struct recipeSampleLine: View {
-	var previewImage: String
+	var recipeImageBase64Encoded: String
 	var recipeName: String
 	var time: String
 	var deleteBlock: () -> Void
@@ -16,10 +16,10 @@ struct recipeSampleLine: View {
 			
 			
 		
-			if let imageData = Data(base64Encoded: previewImage),
+			if let recipeImageData = Data(base64Encoded: recipeImageBase64Encoded),
 			   
 			
-			   let uiImage = UIImage(data: imageData) {
+			   let uiImage = UIImage(data: recipeImageData) {
 				Image(uiImage: uiImage)
 					.resizable()
 					.scaledToFill()

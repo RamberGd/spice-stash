@@ -19,9 +19,36 @@ let defaultWhite: Color = Color(hex: 0xF2F4F3)
 
 struct Recipe: Identifiable {
 	let id = UUID()
-	var previewImage: String // Will store base64 image string
+	var recipeImageBase64Encoded: String // Will store base64 image string
 	var recipeName: String
 	var time: String
 	var calories: Int16
-	var imageData: Data? = nil // Optional, for EditRecipeView's image handling
+	var recipeImageData: Data? = nil // Optional, for EditRecipeView's image handling
+}
+
+enum customFont {
+	static let interRegular = "Inter-Regular"
+	static let interBold = "Inter-Bold"
+}
+
+extension Font {
+	// Text Styles
+	static func titleDefault() -> Font {
+		.custom(food_untitled.customFont.interBold, size: 20)
+	}
+	
+	
+	static func ImportantDefault() -> Font {
+		.custom(food_untitled.customFont.interRegular, size: 14)
+	}
+	
+	static func fontRegularBoldDefault	() -> Font {
+		.custom(food_untitled.customFont.interBold, size: 12)
+	}
+	
+	static func fontRegularDefault	() -> Font {
+		.custom(food_untitled.customFont.interBold, size: 12)
+	}
+
+
 }
