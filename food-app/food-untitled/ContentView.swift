@@ -7,6 +7,7 @@
 
 import SwiftUI
 struct ContentView: View {
+	
 	@State private var recipes: [Recipe] = [
 		Recipe(recipeImageBase64Encoded: "sample", recipeName: "Pasta Carbonara", time: "15-20 min", calories: 310)]
 		

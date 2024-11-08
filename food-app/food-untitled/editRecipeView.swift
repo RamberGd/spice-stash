@@ -41,13 +41,15 @@ struct EditRecipeView: View {
 						Spacer()
 						
 						VStack(alignment: .center, spacing: 4) {
-							// Recipe title
-							Text("Pasta Carbonara")
+							
+							TextField("Pasta Carbonara", text: $recipe.recipeName)
 								
-								.fontWeight(.bold)
+								
 								.foregroundColor(Color(defaultWhite))
 								.font(.titleDefault())
-							
+								.textFieldStyle(PlainTextFieldStyle())
+								.fixedSize()
+								.multilineTextAlignment(.center)
 							
 						
 								
