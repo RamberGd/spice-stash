@@ -17,13 +17,15 @@ let defaultBlack: Color = Color(hex: 0x1E1E1E)
 let defaultWhite: Color = Color(hex: 0xF2F4F3)
 
 
-struct Recipe: Identifiable {
+struct Recipe: Identifiable, Equatable {
 	let id = UUID()
 	var recipeImageBase64Encoded: String // Will store base64 image string
 	var recipeName: String
 	var time: String
 	var calories: Int16
 	var recipeImageData: Data? = nil // Optional, for EditRecipeView's image handling
+	var wasOpened: Bool = false
+	
 }
 
 enum customFont {
@@ -34,7 +36,7 @@ enum customFont {
 extension Font {
 	// Text Styles
 	static func titleDefault() -> Font {
-		.custom(food_untitled.customFont.interBold, size: 20)
+		.custom(food_untitled.customFont.interBold, size: 25)
 	}
 	
 	

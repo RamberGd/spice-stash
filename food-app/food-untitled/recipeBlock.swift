@@ -1,7 +1,7 @@
 import SwiftUI
 import PhotosUI
 
-struct recipeSampleLine: View {
+struct recipeBlock: View {
 	var recipeImageBase64Encoded: String
 	var recipeName: String
 	var time: String
@@ -23,7 +23,7 @@ struct recipeSampleLine: View {
 				Image(uiImage: uiImage)
 					.resizable()
 					.scaledToFill()
-					.frame(height: UIScreen.main.bounds.size.height / 9.5)
+					.frame(height: UIScreen.main.bounds.size.height / 8.5)
 					.clipShape(RoundedRectangle(cornerRadius: 5))
 			} else {
 				// Fallback to default image
@@ -32,7 +32,7 @@ struct recipeSampleLine: View {
 					.foregroundStyle(Color(defaultWhite))
 				
 					.scaledToFill()
-					.frame(height: UIScreen.main.bounds.size.height / 9.5)
+					.frame(height: UIScreen.main.bounds.size.height / 8.5)
 					.clipShape(RoundedRectangle(cornerRadius: 5))
 			}
 			
@@ -47,7 +47,7 @@ struct recipeSampleLine: View {
 				.multilineTextAlignment(.leading)
 				.foregroundStyle(Color.white)
 		}
-		.frame(width: UIScreen.main.bounds.size.width / 3, height: UIScreen.main.bounds.size.height / 7)
+		.frame(width: UIScreen.main.bounds.size.width / 3, height: UIScreen.main.bounds.size.height / 6.5)
 		.clipShape(RoundedRectangle(cornerRadius: 5))
 		.padding(15)
 		.contextMenu {

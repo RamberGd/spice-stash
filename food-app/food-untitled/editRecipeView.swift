@@ -10,6 +10,7 @@ import PhotosUI
 struct EditRecipeView: View {
 	@Binding var recipe: Recipe
 	@State private var selectedImage: PhotosPickerItem? = nil
+	let maxDigits = 4
 	
 	var body: some View {
 		ScrollView {
@@ -39,7 +40,7 @@ struct EditRecipeView: View {
 						
 						Spacer()
 						
-						VStack(alignment: .leading, spacing: 4) {
+						VStack(alignment: .center, spacing: 4) {
 							// Recipe title
 							Text("Pasta Carbonara")
 								
@@ -47,30 +48,65 @@ struct EditRecipeView: View {
 								.foregroundColor(Color(defaultWhite))
 								.font(.titleDefault())
 							
-							// Calories and cook time row
-							HStack(spacing: 8) {
-								TextField("100", value: $recipe.calories, formatter: NumberFormatter())
-								.textFieldStyle(PlainTextFieldStyle())
-								.frame(width: 26)
-								.foregroundColor(Color(defaultWhite))
-								.font(.fontRegularDefault())
-				
-								.multilineTextAlignment(.leading)
-								Text("calories")
-									.foregroundColor(Color(defaultWhite))
-									.font(.fontRegularDefault())
+							
+						
 								
-								Text("•")
-									.foregroundColor(Color(defaultWhite))
-					
-								TextField("30 min", text: $recipe.time, prompt: Text("30 m"))
-									.textFieldStyle(PlainTextFieldStyle())
-									.foregroundColor(Color(defaultWhite))
-							}
-							.font(.subheadline)
+								HStack(spacing: 8) {
+								
+									
+										
+										TextField("100", value: $recipe.calories, formatter: NumberFormatter())
+											.textFieldStyle(PlainTextFieldStyle())
+											.frame(width: 26)
+											.foregroundColor(Color(defaultWhite))
+											.font(.fontRegularDefault())
+											.fixedSize()
+									
+											.onChange(of: recipe.calories) { oldValue, newValue in
+												   // Convert to string to check length
+												   let valueString = String(newValue)
+												
+													
+												   
+											
+												   if valueString.count > maxDigits {
+													   if let truncated = Int16(valueString.prefix(maxDigits)) {
+														   recipe.calories = truncated
+													   } else {
+														   recipe.calories = oldValue
+													   }
+												   }
+											   }
+												
+												
+										
+											.multilineTextAlignment(.leading)
+										Text("calories")
+											.foregroundColor(Color(defaultWhite))
+											.font(.fontRegularDefault())
+									
+									
+									
+									Text("•")
+										.foregroundColor(Color(defaultWhite))
+						
+	
+									
+									TextField("30 min", text: $recipe.time, prompt: Text("30 m"))
+										.textFieldStyle(PlainTextFieldStyle())
+										.foregroundColor(Color(defaultWhite))
+										.font(.fontRegularDefault())
+										.fixedSize()
+										
+				
+									
+								}
+								.font(.subheadline)
+								
+							
 						}
-						.padding()
-						.padding()
+						.padding([.bottom], 20)
+						
 						
 						
 						Spacer()
@@ -97,6 +133,7 @@ struct EditRecipeView: View {
 				}
 				
 				Spacer()
+
 			}
 		}
 		.edgesIgnoringSafeArea(.top)
