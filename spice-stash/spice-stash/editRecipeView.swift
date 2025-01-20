@@ -16,17 +16,30 @@ struct EditRecipeView: View {
 		ScrollView {
 			VStack(spacing: 0) {
 				ZStack(alignment: .bottomLeading) {
-					// Image handling...
-					if let recipeImageData = recipe.recipeImageData{
-						Image(uiImage: UIImage(data: recipeImageData)!)
-							.resizable()
-							.aspectRatio(contentMode: .fill)
-							.frame(height: 300)
-							.clipped()
-					} else {
-						Rectangle()
-							.fill(Color.gray.opacity(0.3))
-							.frame(height: 300)
+		
+					
+					GeometryReader { geometry in
+						let offset = geometry.frame(in: .global).minY
+						
+	
+						// Image handling...
+						if let recipeImageData = recipe.recipeImageData{
+							Image(uiImage: UIImage(data: recipeImageData)!)
+								.resizable()
+								.aspectRatio(contentMode: .fill)
+								.frame(height: 300)
+								.clipped()
+								.scaleEffect(offset > 0 ? 1 + (offset / 300) : 1)
+								.offset(y: offset > 0 ? -offset : 0)
+							
+							
+						} else {
+							Rectangle()
+								.fill(Color.gray.opacity(0.3))
+								.frame(height: 300)
+								.scaleEffect(offset > 0 ? 1 + (offset / 300) : 1)
+								.offset(y: offset > 0 ? -offset : 0)
+						}
 					}
 					
 					LinearGradient(
@@ -51,12 +64,8 @@ struct EditRecipeView: View {
 								.fixedSize()
 								.multilineTextAlignment(.center)
 							
-						
-								
 								HStack(spacing: 8) {
-								
-									
-										
+												
 										TextField("100", value: $recipe.calories, formatter: NumberFormatter())
 											.textFieldStyle(PlainTextFieldStyle())
 											.frame(width: 26)
@@ -99,8 +108,9 @@ struct EditRecipeView: View {
 										.foregroundColor(Color(defaultWhite))
 										.font(.fontRegularDefault())
 										.fixedSize()
-										
-				
+									
+									TextField(text:)
+
 									
 								}
 								.font(.subheadline)

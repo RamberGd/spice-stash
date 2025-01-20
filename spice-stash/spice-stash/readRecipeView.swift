@@ -1,20 +1,21 @@
 //
-//  readRecipeView.swift
+//  editRecipeView.swift
 //  food-untitled
 //
-//  Created by Maksim Ter-Avakian on 07/11/2024.
+//  Created by Maksim Ter-Avakian on 13/09/2024.
 //
 
 import SwiftUI
 import PhotosUI
 struct readRecipeView: View {
 	@Binding var recipe: Recipe
-
+	
+	
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 0) {
 				ZStack(alignment: .bottomLeading) {
-		
+					// Image handling...
 					if let recipeImageData = recipe.recipeImageData{
 						Image(uiImage: UIImage(data: recipeImageData)!)
 							.resizable()
@@ -32,49 +33,67 @@ struct readRecipeView: View {
 						startPoint: .top,
 						endPoint: .bottom
 					)
-
+					
+					
 					HStack() {
 						
 						Spacer()
 						
 						VStack(alignment: .center, spacing: 4) {
-							// Recipe title
-							Text("Pasta Carbonara")
+							
+							Text(recipe.recipeName)
 								
-								.fontWeight(.bold)
+								
 								.foregroundColor(Color(defaultWhite))
 								.font(.titleDefault())
+								.textFieldStyle(PlainTextFieldStyle())
+								.fixedSize()
+								.multilineTextAlignment(.center)
 							
-
+						
+								
 								HStack(spacing: 8) {
-			
-									Text(String($recipe.calories.wrappedValue))
-											.textFieldStyle(PlainTextFieldStyle())
+								
+									
+										
+									Text(String(recipe.calories))
+									
 											.frame(width: 26)
 											.foregroundColor(Color(defaultWhite))
 											.font(.fontRegularDefault())
 											.fixedSize()
-
-											.multilineTextAlignment(.leading)
-									Text("calories")
+									
+											
+									
+									
+									
+										Text("calories")
 											.foregroundColor(Color(defaultWhite))
 											.font(.fontRegularDefault())
 									
-				
+									
+									
 									Text("•")
 										.foregroundColor(Color(defaultWhite))
 						
-					
-									Text("fds")
+	
+									
+									Text(recipe.time)
 										.textFieldStyle(PlainTextFieldStyle())
 										.foregroundColor(Color(defaultWhite))
 										.font(.fontRegularDefault())
 										.fixedSize()
-													
+										
+				
+									
 								}
 								.font(.subheadline)
+								
+							
 						}
 						.padding([.bottom], 20)
+						
+						
 						
 						Spacer()
 					}
@@ -82,14 +101,18 @@ struct readRecipeView: View {
 				}
 				.frame(height: 300)
 				
-
+				
+				
 				Spacer()
+
 			}
 		}
 		.edgesIgnoringSafeArea(.top)
 		.navigationBarTitleDisplayMode(.inline)
 	}
 }
+
+
 
 struct readRecipeView_Previews: PreviewProvider {
 	static var previews: some View {

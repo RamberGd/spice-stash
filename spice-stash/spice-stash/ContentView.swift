@@ -49,7 +49,7 @@ struct ContentView: View {
 					.padding(20)
 			}
 			
-			.background(Color(defaultBlack))
+			
 			.navigationTitle("Recipes")
 				
 			.navigationBarTitleTextColor(Color(defaultWhite))
