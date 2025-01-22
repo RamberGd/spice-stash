@@ -15,11 +15,9 @@
 		D6817C072C32D8D3004EA6F4 /* spice-stashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6817C062C32D8D3004EA6F4 /* spice-stashApp.swift */; };
 		D6817C0B2C32D8D6004EA6F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6817C0A2C32D8D6004EA6F4 /* Assets.xcassets */; };
 		D6817C0E2C32D8D6004EA6F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6817C0D2C32D8D6004EA6F4 /* Preview Assets.xcassets */; };
-		D6817C182C32D8D6004EA6F4 /* food_untitledTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6817C172C32D8D6004EA6F4 /* food_untitledTests.swift */; };
-		D6817C222C32D8D6004EA6F4 /* food_untitledUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6817C212C32D8D6004EA6F4 /* food_untitledUITests.swift */; };
-		D6817C242C32D8D6004EA6F4 /* food_untitledUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6817C232C32D8D6004EA6F4 /* food_untitledUITestsLaunchTests.swift */; };
 		D69C5A242C89C8100028F61D /* recipeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C5A232C89C8100028F61D /* recipeBlock.swift */; };
-		D6A66DD62D3133590041D71E /* dataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A66DD52D3133590041D71E /* dataController.swift */; };
+		D69D4B8D2D402B1600BEA89E /* modelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69D4B8C2D402B1600BEA89E /* modelData.swift */; };
+		D6A66DD62D3133590041D71E /* dataController_dprc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A66DD52D3133590041D71E /* dataController_dprc.swift */; };
 		D6A66DD92D3136630041D71E /* spice-stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D6A66DD72D3136630041D71E /* spice-stash.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -45,19 +43,17 @@
 		D610BC082C94421A00F8701A /* globalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalVariables.swift; sourceTree = "<group>"; };
 		D610BC0A2C945D3100F8701A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D610BC0C2C945D6100F8701A /* editRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editRecipeView.swift; sourceTree = "<group>"; };
-		D615282E2CDA4F7000A41B3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D615282E2CDA4F7000A41B3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6394F9F2CDD0AAE00085F8C /* readRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = readRecipeView.swift; sourceTree = "<group>"; };
+		D64251002D4132D5002162B7 /* spice-stashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "spice-stashTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D64251012D4132D5002162B7 /* spice-stashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "spice-stashUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6817C032C32D8D3004EA6F4 /* spice-stash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spice-stash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6817C062C32D8D3004EA6F4 /* spice-stashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "spice-stashApp.swift"; sourceTree = "<group>"; };
 		D6817C0A2C32D8D6004EA6F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6817C0D2C32D8D6004EA6F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D6817C132C32D8D6004EA6F4 /* spice-stashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "spice-stashTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6817C172C32D8D6004EA6F4 /* food_untitledTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = food_untitledTests.swift; sourceTree = "<group>"; };
-		D6817C1D2C32D8D6004EA6F4 /* spice-stashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "spice-stashUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6817C212C32D8D6004EA6F4 /* food_untitledUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = food_untitledUITests.swift; sourceTree = "<group>"; };
-		D6817C232C32D8D6004EA6F4 /* food_untitledUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = food_untitledUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D69C5A232C89C8100028F61D /* recipeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeBlock.swift; sourceTree = "<group>"; };
-		D6A66DD52D3133590041D71E /* dataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataController.swift; sourceTree = "<group>"; };
+		D69D4B8C2D402B1600BEA89E /* modelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modelData.swift; sourceTree = "<group>"; };
+		D6A66DD52D3133590041D71E /* dataController_dprc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataController_dprc.swift; sourceTree = "<group>"; };
 		D6A66DD82D3136630041D71E /* spice-stash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "spice-stash.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,10 +89,21 @@
 		D6817BFA2C32D8D3004EA6F4 = {
 			isa = PBXGroup;
 			children = (
-				D6817C052C32D8D3004EA6F4 /* spice-stash */,
-				D6817C162C32D8D6004EA6F4 /* food-untitledTests */,
-				D6817C202C32D8D6004EA6F4 /* food-untitledUITests */,
 				D6817C042C32D8D3004EA6F4 /* Products */,
+				D615282E2CDA4F7000A41B3C /* Info.plist */,
+				D61528272CDA401000A41B3C /* resources */,
+				D6817C062C32D8D3004EA6F4 /* spice-stashApp.swift */,
+				D6A66DD52D3133590041D71E /* dataController_dprc.swift */,
+				D6394F9F2CDD0AAE00085F8C /* readRecipeView.swift */,
+				D610BC0A2C945D3100F8701A /* ContentView.swift */,
+				D69C5A232C89C8100028F61D /* recipeBlock.swift */,
+				D610BC0C2C945D6100F8701A /* editRecipeView.swift */,
+				D610BC082C94421A00F8701A /* globalVariables.swift */,
+				D610BC042C94407000F8701A /* extensions.swift */,
+				D69D4B8C2D402B1600BEA89E /* modelData.swift */,
+				D6817C0A2C32D8D6004EA6F4 /* Assets.xcassets */,
+				D6817C0C2C32D8D6004EA6F4 /* Preview Content */,
+				D6A66DD72D3136630041D71E /* spice-stash.xcdatamodeld */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,30 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				D6817C032C32D8D3004EA6F4 /* spice-stash.app */,
-				D6817C132C32D8D6004EA6F4 /* spice-stashTests.xctest */,
-				D6817C1D2C32D8D6004EA6F4 /* spice-stashUITests.xctest */,
+				D64251002D4132D5002162B7 /* spice-stashTests.xctest */,
+				D64251012D4132D5002162B7 /* spice-stashUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D6817C052C32D8D3004EA6F4 /* spice-stash */ = {
-			isa = PBXGroup;
-			children = (
-				D615282E2CDA4F7000A41B3C /* Info.plist */,
-				D61528272CDA401000A41B3C /* resources */,
-				D6817C062C32D8D3004EA6F4 /* spice-stashApp.swift */,
-				D6A66DD52D3133590041D71E /* dataController.swift */,
-				D6394F9F2CDD0AAE00085F8C /* readRecipeView.swift */,
-				D610BC0A2C945D3100F8701A /* ContentView.swift */,
-				D69C5A232C89C8100028F61D /* recipeBlock.swift */,
-				D610BC0C2C945D6100F8701A /* editRecipeView.swift */,
-				D610BC082C94421A00F8701A /* globalVariables.swift */,
-				D610BC042C94407000F8701A /* extensions.swift */,
-				D6817C0A2C32D8D6004EA6F4 /* Assets.xcassets */,
-				D6817C0C2C32D8D6004EA6F4 /* Preview Content */,
-				D6A66DD72D3136630041D71E /* spice-stash.xcdatamodeld */,
-			);
-			path = "spice-stash";
 			sourceTree = "<group>";
 		};
 		D6817C0C2C32D8D6004EA6F4 /* Preview Content */ = {
@@ -136,23 +123,6 @@
 				D6817C0D2C32D8D6004EA6F4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D6817C162C32D8D6004EA6F4 /* food-untitledTests */ = {
-			isa = PBXGroup;
-			children = (
-				D6817C172C32D8D6004EA6F4 /* food_untitledTests.swift */,
-			);
-			path = "food-untitledTests";
-			sourceTree = "<group>";
-		};
-		D6817C202C32D8D6004EA6F4 /* food-untitledUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D6817C212C32D8D6004EA6F4 /* food_untitledUITests.swift */,
-				D6817C232C32D8D6004EA6F4 /* food_untitledUITestsLaunchTests.swift */,
-			);
-			path = "food-untitledUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +139,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D642510A2D413D42002162B7 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				D61528272CDA401000A41B3C /* resources */,
@@ -193,7 +164,7 @@
 			);
 			name = "spice-stashTests";
 			productName = "food-untitledTests";
-			productReference = D6817C132C32D8D6004EA6F4 /* spice-stashTests.xctest */;
+			productReference = D64251002D4132D5002162B7 /* spice-stashTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D6817C1C2C32D8D6004EA6F4 /* spice-stashUITests */ = {
@@ -211,7 +182,7 @@
 			);
 			name = "spice-stashUITests";
 			productName = "food-untitledUITests";
-			productReference = D6817C1D2C32D8D6004EA6F4 /* spice-stashUITests.xctest */;
+			productReference = D64251012D4132D5002162B7 /* spice-stashUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -246,6 +217,9 @@
 				Base,
 			);
 			mainGroup = D6817BFA2C32D8D3004EA6F4;
+			packageReferences = (
+				D64251082D413D30002162B7 /* XCRemoteSwiftPackageReference "Disk" */,
+			);
 			productRefGroup = D6817C042C32D8D3004EA6F4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -292,7 +266,8 @@
 				D610BC0B2C945D3100F8701A /* ContentView.swift in Sources */,
 				D69C5A242C89C8100028F61D /* recipeBlock.swift in Sources */,
 				D6A66DD92D3136630041D71E /* spice-stash.xcdatamodeld in Sources */,
-				D6A66DD62D3133590041D71E /* dataController.swift in Sources */,
+				D6A66DD62D3133590041D71E /* dataController_dprc.swift in Sources */,
+				D69D4B8D2D402B1600BEA89E /* modelData.swift in Sources */,
 				D610BC092C94421A00F8701A /* globalVariables.swift in Sources */,
 				D610BC0D2C945D6100F8701A /* editRecipeView.swift in Sources */,
 				D6394FA02CDD0AC400085F8C /* readRecipeView.swift in Sources */,
@@ -304,7 +279,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6817C182C32D8D6004EA6F4 /* food_untitledTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,14 +286,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6817C222C32D8D6004EA6F4 /* food_untitledUITests.swift in Sources */,
-				D6817C242C32D8D6004EA6F4 /* food_untitledUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D642510A2D413D42002162B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = D64251092D413D42002162B7 /* Disk */;
+		};
 		D6817C152C32D8D6004EA6F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D6817C022C32D8D3004EA6F4 /* spice-stash */;
@@ -459,11 +435,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"spice-stash/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = 2TP6QD83T8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "spice-stash/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -491,11 +467,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"spice-stash/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = 2TP6QD83T8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "spice-stash/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -624,6 +600,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D64251082D413D30002162B7 /* XCRemoteSwiftPackageReference "Disk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/saoudrizwan/Disk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D64251092D413D42002162B7 /* Disk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D64251082D413D30002162B7 /* XCRemoteSwiftPackageReference "Disk" */;
+			productName = Disk;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D6A66DD72D3136630041D71E /* spice-stash.xcdatamodeld */ = {

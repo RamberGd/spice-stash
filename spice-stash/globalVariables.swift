@@ -17,14 +17,15 @@ let defaultBlack: Color = Color(hex: 0x1E1E1E)
 let defaultWhite: Color = Color(hex: 0xF2F4F3)
 
 
-struct Recipe: Identifiable{
-	let id = UUID()
+struct Recipe: Identifiable, Hashable, Codable {
+	var id = UUID()
 	var recipeImageBase64Encoded: String // Will store base64 image string
 	var recipeName: String
 	var time: String
 	var calories: Int16
 	var recipeImageData: Data? = nil // Optional, for EditRecipeView's image handling
 	var wasOpened: Bool = false
+	var steps: [String] = []
 	
 }
 
