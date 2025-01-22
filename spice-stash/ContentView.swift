@@ -15,6 +15,7 @@ struct ContentView: View {
 	
 	
 	@State public var recipes: [Recipe] = []
+	@State private var hasRunOnFirstOpen = false
 	
 	let columns = [
 		GridItem(.flexible(), spacing: 20),
@@ -33,12 +34,15 @@ struct ContentView: View {
 									time: recipe.time,
 									deleteBlock: {
 										if let index = recipes.firstIndex(where: { $0.id == recipe.id }) {
-											recipes.remove(at: index)}},
+											recipes.remove(at: index)}
+										saveRecipes(recipes)},
+									
+											
 									openBlock: {}
 								)}}
 					// Plus button to add new recipe
 					Button(action: {
-						recipes.append(Recipe(recipeImageBase64Encoded: "empty-img", recipeName: "New Recipe", time: "time", calories: 310))}) {
+						recipes.append(Recipe(recipeImageBase64Encoded: "empty-img", recipeName: "New Recipe", time: "10-15 min", calories: 150)); saveRecipes(recipes)}) {
 							Image(systemName: "plus.circle.fill")
 								.resizable()
 								.frame(width: 50, height: 50)
@@ -51,11 +55,20 @@ struct ContentView: View {
 			.navigationTitle("Recipes")
 			.navigationBarTitleTextColor(Color(defaultWhite))
 			
-			.onAppear{
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-					recipes = loadRecipes()
-				}
-			}
+			
+			
+			
+			.onAppear {
+						if !hasRunOnFirstOpen {
+							recipes = loadRecipes()
+							hasRunOnFirstOpen = true
+				
+						}
+				saveRecipes(recipes)
+				
+					}
+			
+		
 		}
 	}
 }

@@ -10,9 +10,28 @@ import Foundation
 
 
 func loadRecipes() -> [Recipe] {
-	guard let url = Bundle.main.url(forResource: "recipesJSON", withExtension: "json"),
-		  let data = try? Data(contentsOf: url) else {
-		return []
+	let fileManager = FileManager.default
+	let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+	let fileURL = documentsDirectory.appendingPathComponent("recipesJSON.json")
+	var data: Data
+	
+	if fileManager.fileExists(atPath: fileURL.path) {
+		// Load from documents directory
+		do {
+			data = try Data(contentsOf: fileURL)
+			print("Loaded recipes from documents directory")
+		} catch {
+			print("Error loading data from documents directory: \(error)")
+			return []
+		}
+	} else {
+		// Load from app bundle
+		guard let bundleURL = Bundle.main.url(forResource: "recipesJSON", withExtension: "json"),
+			  let bundleData = try? Data(contentsOf: bundleURL) else {
+			return []
+		}
+		data = bundleData
+		print("Loaded recipes from app bundle")
 	}
 	
 	do {
@@ -21,10 +40,7 @@ func loadRecipes() -> [Recipe] {
 		print("Error decoding JSON: \(error)")
 		return []
 	}
-	
-	
 }
-
 
 
 func saveRecipes(_ recipesArr: [Recipe]) {
@@ -33,6 +49,7 @@ func saveRecipes(_ recipesArr: [Recipe]) {
 		let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		let fileURL = documentsDirectory.appendingPathComponent("recipesJSON.json")
 		try data.write(to: fileURL)
+		print("saved")
 	} catch {
 		print("Error saving JSON: \(error)")
 	}

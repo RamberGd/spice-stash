@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 struct EditRecipeView: View {
-	@Binding var recipes: [Recipe]
+
 	@Binding var recipe: Recipe
 	@State private var selectedImage: PhotosPickerItem? = nil
 	let maxDigits = 4
@@ -129,7 +129,10 @@ struct EditRecipeView: View {
 						}
 					}
 					LazyVGrid(columns: stepsColumns){
-		
+						 //Button(acton: {
+							 
+							
+						//})
 					}
 					
 					Spacer()
