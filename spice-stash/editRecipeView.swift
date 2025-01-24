@@ -11,6 +11,7 @@ struct EditRecipeView: View {
 
 	@Binding var recipe: Recipe
 	@State private var selectedImage: PhotosPickerItem? = nil
+	@FocusState private var isFocused: Bool
 	let maxDigits = 4
 	let stepsColumns = [GridItem(.flexible())]
 	
@@ -20,13 +21,8 @@ struct EditRecipeView: View {
 				VStack(spacing: 0) {
 					ZStack(alignment: .bottomLeading) {
 						
-						ZStack(alignment: .topTrailing) {
-							Text("view")
-								.foregroundStyle(Color.blue)
-								.padding()
-								.frame(alignment: .topTrailing)
-						}
-						.frame(width: UIScreen.main.bounds.size.width, height:300)
+						
+						
 						GeometryReader { geometry in
 							let offset = geometry.frame(in: .global).minY
 							if let recipeImageData = recipe.recipeImageData{
@@ -46,7 +42,7 @@ struct EditRecipeView: View {
 							}
 						}
 						LinearGradient(
-							gradient: Gradient(colors: [.clear, .black.opacity(0.7)]),
+							gradient: Gradient(colors: [.clear, .black.opacity(0.9)]),
 							startPoint: .top,
 							endPoint: .bottom
 						)
@@ -57,18 +53,21 @@ struct EditRecipeView: View {
 								TextField("Pasta Carbonara", text: $recipe.recipeName)
 									.foregroundColor(Color(defaultWhite))
 									.font(.titleDefault())
-									.textFieldStyle(PlainTextFieldStyle())
+									
 									.fixedSize()
 									.multilineTextAlignment(.center)
+									.textFieldStyle(.plain)
+									
 								
 								HStack(spacing: 8) {
 									
 									TextField("100", value: $recipe.calories, formatter: NumberFormatter())
-										.textFieldStyle(PlainTextFieldStyle())
+										.textFieldStyle(.automatic)
 										.frame(width: 26)
 										.foregroundColor(Color(defaultWhite))
 										.font(.fontRegularDefault())
 										.fixedSize()
+									
 									
 										.onChange(of: recipe.calories) { oldValue, newValue in
 											// Convert to string to check length
@@ -92,11 +91,12 @@ struct EditRecipeView: View {
 									Text("•")
 										.foregroundColor(Color(defaultWhite))
 						
-									TextField("30 min", text: $recipe.time, prompt: Text("30 m"))
+									TextField("30 min", text: $recipe.time)
 										.textFieldStyle(PlainTextFieldStyle())
 										.foregroundColor(Color(defaultWhite))
 										.font(.fontRegularDefault())
 										.fixedSize()
+										.keyboardType(.namePhonePad)
 									}
 								
 								
@@ -105,56 +105,129 @@ struct EditRecipeView: View {
 							.padding([.bottom], 20)
 							Spacer()
 						}
+						
 					}
 					.frame(height: 300)
 				
 					
-					PhotosPicker(selection: $selectedImage, matching: .images, photoLibrary: .shared()) {
-						Image(systemName: "photo")
-							.padding(20)
-							.font(.title)
-							.scaledToFill()
-							.background(Color.blue)
-							.foregroundColor(Color(defaultWhite))
-							.clipShape(Circle())
-							.frame(width: 93, height: 93)
-					}
 					
-					.onChange(of: selectedImage) { oldValue, newValue in
-						Task {
-							if let data = try? await newValue?.loadTransferable(type: Data.self) {
-								recipe.recipeImageData = data
-								recipe.recipeImageBase64Encoded = data.base64EncodedString()
+						PhotosPicker(selection: $selectedImage, matching: .images, photoLibrary: .shared()) {
+							Image(systemName: "photo")
+								.padding(20)
+								.font(.title)
+								.scaledToFill()
+								.background(Color.blue)
+								.foregroundColor(Color(defaultWhite))
+								.clipShape(Circle())
+								.frame(width: 93, height: 93)//consistent with IOS UI elements (control centrre)
+								.position(x:UIScreen.main.bounds.size.width / 1.15, y: 0 ) // ура костыли
+								.padding([.bottom], -80) //ура больше костылей
+						}
+						
+						.onChange(of: selectedImage) { oldValue, newValue in
+							Task {
+								if let data = try? await newValue?.loadTransferable(type: Data.self) {
+									recipe.recipeImageData = data
+									recipe.recipeImageBase64Encoded = data.base64EncodedString()
+								}
 							}
 						}
-					}
-					LazyVGrid(columns: stepsColumns){
-						 //Button(acton: {
-							 
-							
-						//})
-					}
+					
+					
+					Text("Ingredients")
+						.font(.titleDefault())
+						.foregroundStyle(Color(defaultWhite))
+					
+					
+					TextEditor(text: Binding(
+						get: { recipe.ingredients },
+						set: { recipe.ingredients = $0.isEmpty ? "" : $0 }
+					))
+					.padding()
+					.font(.ImportantDefault()) // Apply custom font
+					.foregroundColor(Color(defaultWhite)) // Set text color
+					.background(
+						RoundedRectangle(cornerRadius: 8) // Apply rounded corners here
+							.fill(Color.clear) // Make the background transparent to show the stroke
+					)
+					.overlay(
+						RoundedRectangle(cornerRadius: 8) // Apply stroke over the background
+							.stroke(Color(defaultBlack), lineWidth: 1) // Stroke color and thickness
+							.padding()
+						
+					)
+					.clipped()
+					.focused($isFocused)
 					
 					Spacer()
 					
+					
+					Text("Recipe")
+						.font(.titleDefault())
+						.foregroundStyle(Color(defaultWhite))
+					TextEditor(text: Binding(
+						get: { recipe.steps },
+						set: { recipe.steps = $0.isEmpty ? "" : $0 }
+					))
+					.padding()
+					.font(.ImportantDefault()) // Apply custom font
+					.foregroundColor(Color(defaultWhite)) // Set text color
+					.background(
+						RoundedRectangle(cornerRadius: 8) // Apply rounded corners here
+							.fill(Color.clear) // Make the background transparent to show the stroke
+					)
+					.overlay(
+						RoundedRectangle(cornerRadius: 8) // Apply stroke over the background
+							.stroke(Color(defaultBlack), lineWidth: 1) // Stroke color and thickness
+							.padding()
+						
+					)
+					.clipped()
+					.focused($isFocused)
+					
 				}
+				
+				
+				
+				
+				
+				
 			}
+		
+			.overlay(
+				NavigationLink(destination: readRecipeView(recipe: $recipe)) { // NavigationLink to RecipeReadView
+					Image(systemName: "book")
+									.foregroundStyle(Color(defaultWhite))
+									.padding(20)
+									.font(.title)
+									.scaledToFill()
+									.background(Color.blue)
+									.clipShape(Circle())
+									.frame(width: 93, height: 93)
+									
+							}
+							.position(x: UIScreen.main.bounds.size.width / 1.15, y: UIScreen.main.bounds.size.height - 100)
+						)
 			
 			
 		
 		
-		
+			.onTapGesture {
+								// Dismiss the keyboard by unfocusing the TextField
+								isFocused = false
+							}
 			.edgesIgnoringSafeArea(.top)
-			.navigationBarTitleDisplayMode(.inline)
-	}
+			
+				}
 }
 
 
-/*
+
 struct EditRecipeView_Previews: PreviewProvider {
 	static var previews: some View {
-		EditRecipeView(recipe: .constant(Recipe(recipeImageBase64Encoded: "sample", recipeName: "Pasta Carbonara", time: "25-30 min", calories: 310)))
+		EditRecipeView(recipe: .constant(Recipe(recipeImageBase64Encoded: "sample", recipeName: "Pasta Carbonara", time: "25-30 min", calories: 310, ingredients: "", steps: "")))
 	}
 }
 
-*/
+
+

@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct spice_stashApp: App {
 		
-	@StateObject private var dataController = DataController()
+	
     var body: some Scene {
         WindowGroup {
 			ContentView()

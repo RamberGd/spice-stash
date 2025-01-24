@@ -1,47 +1,15 @@
 [
-  {
-	"id": "ec26c3e5-9c62-49c2-9f7c-b2150e7b51e5",
-	"recipeImageBase64Encoded": "iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA...",
-	"recipeName": "Spaghetti Carbonara",
-	"time": "00:25",
-	"calories": 550,
-	"recipeImageData": null,
-	"wasOpened": false,
-	"steps": [
-	  "Boil water and cook spaghetti.",
-	  "Fry pancetta in a pan.",
-	  "Mix eggs and cheese in a bowl.",
-	  "Combine everything in the pan and serve."
-	]
-  },
-  {
-	"id": "2c0d7c98-6f35-431e-8f1a-4136b88c2d42",
-	"recipeImageBase64Encoded": "iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA...",
-	"recipeName": "Chicken Curry",
-	"time": "00:40",
-	"calories": 650,
-	"recipeImageData": null,
-	"wasOpened": true,
-	"steps": [
-	  "Sauté onions, garlic, and ginger.",
-	  "Add chicken and cook until browned.",
-	  "Add spices and tomato puree.",
-	  "Simmer until chicken is tender."
-	]
-  },
-  {
-	"id": "7b319d69-4e5e-4bfa-a89c-c2f3a6b5d55b",
-	"recipeImageBase64Encoded": "iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA...",
-	"recipeName": "Vegetable Stir Fry",
-	"time": "00:15",
-	"calories": 300,
-	"recipeImageData": null,
-	"wasOpened": false,
-	"steps": [
-	  "Chop vegetables into small pieces.",
-	  "Heat oil in a pan or wok.",
-	  "Stir fry vegetables until cooked but crisp.",
-	  "Add soy sauce and serve."
-	]
-  }
+	
+{
+  "id": "3F2504E0-4F89-11D3-9A0C-0305E82C3301",
+  "recipeImageBase64Encoded": "x",
+  "recipeName": "Classic Margherita Pizza",
+  "time": "45 Min",
+  "calories": 270,
+  "recipeImageData": null,
+  "wasOpened": false,
+  "ingredients": "2 cups all-purpose flour\n 1 tsp salt\n 1 tsp sugar\n 1 tbsp olive oil\n 3/4 cup water\n 1/2 cup tomato sauce\n 1 cup shredded mozzarella cheese\n Fresh basil leaves",
+  "steps": "1. Preheat oven to 220°C (425°F).\n 2. Combine flour, salt, and sugar in a bowl. Gradually mix in water and olive oil to form a dough. \n3. Roll out the dough into a thin circle. \n4. Spread tomato sauce evenly over the dough. \n5. Sprinkle mozzarella cheese on top. \n6. Add fresh basil leaves as desired.\n 7. Bake in the oven for 12-15 minutes or until crust is golden and cheese is bubbly."
+}
+
 ]

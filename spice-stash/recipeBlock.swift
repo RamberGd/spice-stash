@@ -14,12 +14,10 @@ struct recipeBlock: View {
 		VStack(alignment: .leading) {
 			// Handle the base64 string for preview image
 			
-			
-		
 			if let recipeImageData = Data(base64Encoded: recipeImageBase64Encoded),
 			   
-			
-			   let uiImage = UIImage(data: recipeImageData) {
+				
+				let uiImage = UIImage(data: recipeImageData) {
 				Image(uiImage: uiImage)
 					.resizable()
 					.scaledToFill()
@@ -56,10 +54,6 @@ struct recipeBlock: View {
 			}) {
 				Label("Remove", systemImage: "minus.circle")
 			}
-			//Button(action: {
-				
-					//Label("Open", systemImage: "book.pages"))
-				//}
 		}
 	}
 }

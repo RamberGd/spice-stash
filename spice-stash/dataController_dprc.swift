@@ -1,4 +1,8 @@
-
+/* !!! Deprecated !!!
+ 
+ 
+ 
+ 
 import CoreData
 import Foundation
 
@@ -14,3 +18,4 @@ class DataController: ObservableObject {
 		}
 	}
 }
+*/

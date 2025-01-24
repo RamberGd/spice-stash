@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 func loadRecipes() -> [Recipe] {
 	let fileManager = FileManager.default
 	let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!

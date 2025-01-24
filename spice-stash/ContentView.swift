@@ -1,21 +1,11 @@
-//
-//  ContentView.swift
-//  food-untitled
-//
-//  Created by Maksim Ter-Avakian on 13/09/2024.
-//
+// Home page
 
 import SwiftUI
-
-
-
-
 struct ContentView: View {
 	
-	
-	
+	//Array with recipe structs
 	@State public var recipes: [Recipe] = []
-	@State private var hasRunOnFirstOpen = false
+	@State private var hasOpened = false
 	
 	let columns = [
 		GridItem(.flexible(), spacing: 20),
@@ -25,9 +15,10 @@ struct ContentView: View {
 		NavigationView {
 			ScrollView {
 				LazyVGrid(columns: columns, spacing: 20) {
+					
 					ForEach($recipes) { $recipe in
 						NavigationLink(
-							destination: EditRecipeView(recipe: $recipe)) {
+							destination: readRecipeView(recipe: $recipe)) {
 								recipeBlock(
 									recipeImageBase64Encoded: recipe.recipeImageBase64Encoded,
 									recipeName: recipe.recipeName,
@@ -40,9 +31,10 @@ struct ContentView: View {
 											
 									openBlock: {}
 								)}}
+					
 					// Plus button to add new recipe
 					Button(action: {
-						recipes.append(Recipe(recipeImageBase64Encoded: "empty-img", recipeName: "New Recipe", time: "10-15 min", calories: 150)); saveRecipes(recipes)}) {
+						recipes.append(Recipe(recipeImageBase64Encoded: "empty-img", recipeName: "New Recipe", time: "10 Min", calories: 100, ingredients: "", steps: "")); saveRecipes(recipes)}) {
 							Image(systemName: "plus.circle.fill")
 								.resizable()
 								.frame(width: 50, height: 50)
@@ -59,14 +51,16 @@ struct ContentView: View {
 			
 			
 			.onAppear {
-						if !hasRunOnFirstOpen {
+						if !hasOpened {
 							recipes = loadRecipes()
-							hasRunOnFirstOpen = true
+							hasOpened = true
 				
 						}
 				saveRecipes(recipes)
 				
 					}
+			
+			
 			
 		
 		}

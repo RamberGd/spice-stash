@@ -1,9 +1,4 @@
-//
-//  editRecipeView.swift
-//  food-untitled
-//
-//  Created by Maksim Ter-Avakian on 13/09/2024.
-//
+
 
 import SwiftUI
 import PhotosUI
@@ -107,6 +102,21 @@ struct readRecipeView: View {
 
 			}
 		}
+		
+		.overlay(
+			NavigationLink(destination: EditRecipeView(recipe: $recipe)) { // NavigationLink to RecipeReadView
+				Image(systemName: "square.and.pencil")
+								.foregroundStyle(Color(defaultWhite))
+								.padding(20)
+								.font(.title)
+								.scaledToFill()
+								.background(Color.blue)
+								.clipShape(Circle())
+								.frame(width: 93, height: 93)
+								
+						}
+						.position(x: UIScreen.main.bounds.size.width / 1.15, y: UIScreen.main.bounds.size.height - 100)
+					)
 		.edgesIgnoringSafeArea(.top)
 		.navigationBarTitleDisplayMode(.inline)
 	}
@@ -114,9 +124,12 @@ struct readRecipeView: View {
 
 
 
+
+/*
+
 struct readRecipeView_Previews: PreviewProvider {
 	static var previews: some View {
-		readRecipeView(recipe: .constant(Recipe(recipeImageBase64Encoded: "sample", recipeName: "Pasta Carbonara", time: "25-30 min", calories: 310)))
+		readRecipeView(recipe: .constant(Recipe(recipeImageBase64Encoded: "sample", recipeName: "Pasta Carbonara", time: "25-30 min", calories: 310, steps: "step 1")))
 	}
 }
-
+ */
