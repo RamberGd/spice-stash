@@ -6,105 +6,136 @@ struct readRecipeView: View {
 	@Binding var recipe: Recipe
 	
 	
+	
+	
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 0) {
 				ZStack(alignment: .bottomLeading) {
-					// Image handling...
-					if let recipeImageData = recipe.recipeImageData{
-						Image(uiImage: UIImage(data: recipeImageData)!)
-							.resizable()
-							.aspectRatio(contentMode: .fill)
-							.frame(height: 300)
-							.clipped()
-					} else {
-						Rectangle()
-							.fill(Color.gray.opacity(0.3))
-							.frame(height: 300)
-					}
 					
+					
+					
+					GeometryReader { geometry in
+						let offset = geometry.frame(in: .global).minY
+						if let recipeImageData = recipe.recipeImageData{
+							Image(uiImage: UIImage(data: recipeImageData)!)
+								.resizable()
+								.aspectRatio(contentMode: .fill)
+								.frame(height: 300)
+								.clipped()
+								.scaleEffect(offset > 0 ? 1 + (offset / 300) : 1)
+								.offset(y: offset > 0 ? -offset : 0)
+						} else {
+							Rectangle()
+								.fill(Color.gray.opacity(0.3))
+								.frame(height: 300)
+								.scaleEffect(offset > 0 ? 1 + (offset / 300) : 1)
+								.offset(y: offset > 0 ? -offset : 0)
+						}
+					
+						if let recipeImageData = recipe.recipeImageData{
+							Image(uiImage: UIImage(data: recipeImageData)!)
+								.resizable()
+								.aspectRatio(contentMode: .fill)
+								.frame(height: 300)
+								.clipped()
+								.scaleEffect(offset > 0 ? 1 + (offset / 300) : 1)
+								.offset(y: offset > 0 ? -offset : 0)
+						} else {
+							Rectangle()
+								.fill(Color.gray.opacity(0.3))
+								.frame(height: 300)
+								.scaleEffect(offset > 0 ? 1 + (offset / 300) : 1)
+								.offset(y: offset > 0 ? -offset : 0)
+						}
+					}
 					LinearGradient(
-						gradient: Gradient(colors: [.clear, .black.opacity(0.7)]),
+						gradient: Gradient(colors: [.clear, .black.opacity(0.9)]),
 						startPoint: .top,
 						endPoint: .bottom
 					)
-					
-					
 					HStack() {
-						
 						Spacer()
-						
 						VStack(alignment: .center, spacing: 4) {
 							
 							Text(recipe.recipeName)
-								
-								
 								.foregroundColor(Color(defaultWhite))
 								.font(.titleDefault())
-								.textFieldStyle(PlainTextFieldStyle())
+								
 								.fixedSize()
 								.multilineTextAlignment(.center)
+								
+								
 							
-						
+							HStack(spacing: 8) {
 								
-								HStack(spacing: 8) {
+								Text(String(recipe.calories))
+									
+									.frame(width: 26)
+									.foregroundColor(Color(defaultWhite))
+									.font(.fontRegularDefault())
+									.fixedSize()
+								
 								
 									
-										
-									Text(String(recipe.calories))
-									
-											.frame(width: 26)
-											.foregroundColor(Color(defaultWhite))
-											.font(.fontRegularDefault())
-											.fixedSize()
-									
-											
-									
-									
-									
-										Text("calories")
-											.foregroundColor(Color(defaultWhite))
-											.font(.fontRegularDefault())
-									
-									
-									
-									Text("•")
-										.foregroundColor(Color(defaultWhite))
-						
+									.multilineTextAlignment(.leading)
+
+								Text("calories")
+									.foregroundColor(Color(defaultWhite))
+									.font(.fontRegularDefault())
 	
+								Text("•")
+									.foregroundColor(Color(defaultWhite))
+					
+								Text(recipe.time)
 									
-									Text(recipe.time)
-										.textFieldStyle(PlainTextFieldStyle())
-										.foregroundColor(Color(defaultWhite))
-										.font(.fontRegularDefault())
-										.fixedSize()
-										
-				
-									
+									.foregroundColor(Color(defaultWhite))
+									.font(.fontRegularDefault())
+									.fixedSize()
+									.keyboardType(.namePhonePad)
 								}
-								.font(.subheadline)
-								
 							
-						}
+							
+							.font(.subheadline)
+							}
 						.padding([.bottom], 20)
-						
-						
-						
 						Spacer()
 					}
 					
 				}
+				
+				
 				.frame(height: 300)
 				
 				
 				
-				Spacer()
-
+				
+					Text("Ingredients")
+					.font(.titleDefault())
+					.foregroundStyle(Color(defaultWhite))
+					.padding()
+				
+									 
+				Text(recipe.ingredients).font(.ImportantDefault())
+					.foregroundStyle(Color(defaultWhite))
+					.padding()
+				
+				
+				Text("Recipe")
+					.font(.titleDefault())
+					.foregroundStyle(Color(defaultWhite))
+					.padding()
+									 
+									 
+				Text(recipe.steps).font(.ImportantDefault())
+					.foregroundStyle(Color(defaultWhite))
+					.font(.ImportantDefault())
+					.padding()
 			}
 		}
 		
 		.overlay(
-			NavigationLink(destination: EditRecipeView(recipe: $recipe)) { // NavigationLink to RecipeReadView
+			NavigationLink(destination: editRecipeView(recipe: $recipe)) { // NavigationLink to RecipeReadView
 				Image(systemName: "square.and.pencil")
 								.foregroundStyle(Color(defaultWhite))
 								.padding(20)

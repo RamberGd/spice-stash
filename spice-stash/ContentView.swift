@@ -18,7 +18,7 @@ struct ContentView: View {
 					
 					ForEach($recipes) { $recipe in
 						NavigationLink(
-							destination: readRecipeView(recipe: $recipe)) {
+							destination: editRecipeView(recipe: $recipe)) {
 								recipeBlock(
 									recipeImageBase64Encoded: recipe.recipeImageBase64Encoded,
 									recipeName: recipe.recipeName,

@@ -23,8 +23,7 @@ struct Recipe: Identifiable, Hashable, Codable {
 	var recipeName: String
 	var time: String
 	var calories: Int16
-	var recipeImageData: Data? = nil // Optional, for EditRecipeView's image handling
-	var wasOpened: Bool = false
+	var recipeImageData: Data? = nil // Optional, for editRecipeView's image handling
 	var ingredients: String
 	var steps: String
 	
